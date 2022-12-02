@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: django2
+  name: django2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django2
+  template:
+    metadata:
+      labels:
+        app: django2
+    spec:
+      containers:
+      - image: carving/django-app:latest
+        name: django-app
+        ports:
+        - containerPort: 8000
